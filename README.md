@@ -3,10 +3,10 @@ Command line tic tac toe in go
 
 # How to use
 
-$ go build main.go tic_tac_toe.go
+$ go build main.go
 
 $ ./main
 
 or simple 
 
-$ go run *.go
+$ go run main.go
