@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"tic_tac_toe/game"
 )
 
 func main() {
-	t := newTicTacToe()
+	t := game.NewTicTacToe()
 	fmt.Println("Welcome to tic tac toe game!")
-	t.print()
+	t.Print()
 
 	for {
 		var position string
@@ -17,28 +18,28 @@ func main() {
 		var j int
 		var resetGame string
 
-		fmt.Printf("Do your move '%s' player (input a position like 0,1)\n", t.currentMark)
+		fmt.Printf("Do your move '%s' player (input a position like 0,1)\n", t.CurrentMark)
 		fmt.Scanf("%s", &position)
 
 		arr := strings.Split(position, ",")
 		i, _ = strconv.Atoi(arr[0])
 		j, _ = strconv.Atoi(arr[1])
 
-		t.addMove(i, j)
-		t.print()
+		t.AddMove(i, j)
+		t.Print()
 
-		if t.checkVictory(i, j) {
-			fmt.Printf("Congratulations, '%s' player win!\n", t.currentMark)
+		if t.CheckVictory(i, j) {
+			fmt.Printf("Congratulations, '%s' player win!\n", t.CurrentMark)
 			fmt.Printf("\nRestart the game? y/n \n")
 			fmt.Scanf("%s", &resetGame)
 
 			if resetGame == "y" {
-				t.clean()
+				t.Clean()
 			} else {
 				return
 			}
 		}
 
-		t.changeTurn()
+		t.ChangeTurn()
 	}
 }

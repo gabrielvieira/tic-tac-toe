@@ -1,20 +1,20 @@
-package main
+package game
 
 import "fmt"
 
-type TicTacToe struct {
+type ticTacToe struct {
 	board       [3][3]string
-	currentMark string
+	CurrentMark string
 }
 
-func newTicTacToe() TicTacToe {
+func NewTicTacToe() ticTacToe {
 	board := [3][3]string{}
-	t := TicTacToe{board: board, currentMark: "X"}
-	t.clean()
+	t := ticTacToe{board: board, CurrentMark: "X"}
+	t.Clean()
 	return t
 }
 
-func (t *TicTacToe) clean() {
+func (t *ticTacToe) Clean() {
 	for i := 0; i < 3; i++ {
 		for j := 0; j < 3; j++ {
 			t.board[i][j] = " "
@@ -22,19 +22,19 @@ func (t *TicTacToe) clean() {
 	}
 }
 
-func (t *TicTacToe) addMove(i, j int) {
-	t.board[i][j] = t.currentMark
+func (t *ticTacToe) AddMove(i, j int) {
+	t.board[i][j] = t.CurrentMark
 }
 
-func (t *TicTacToe) changeTurn() {
-	if t.currentMark == "X" {
-		t.currentMark = "O"
+func (t *ticTacToe) ChangeTurn() {
+	if t.CurrentMark == "X" {
+		t.CurrentMark = "O"
 	} else {
-		t.currentMark = "X"
+		t.CurrentMark = "X"
 	}
 }
 
-func (t TicTacToe) checkVictory(i, j int) bool {
+func (t ticTacToe) CheckVictory(i, j int) bool {
 
 	if t.board[i][0] == t.board[i][1] && t.board[i][1] == t.board[i][2] {
 		return true
@@ -55,7 +55,7 @@ func (t TicTacToe) checkVictory(i, j int) bool {
 	return false
 }
 
-func (t TicTacToe) print() {
+func (t ticTacToe) Print() {
 
 	/*
 		create a print like this
